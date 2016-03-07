@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="User">
+	<resultMap id="user" type="com.qq.model.User">
+        <result property="oo" column="OO"/>
+        <result property="pwd" column="PWD"/>
+        <result property="nicheng" column="NICHENG"/>
+        <result property="pym" column="PYM"/>
+        <result property="grade" column="GRADE"/>
+        <result property="ismember" column="ISMEMBER"/>
+        <result property="weixin" column="WEIXIN"/>
+        <result property="email" column="EMAIL"/>
+        <result property="blog" column="BLOG"/>
+        <result property="phone" column="PHONE"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="spare1" column="SPARE1"/>
+        <result property="spare2" column="SPARE2"/>
+        <result property="spare3" column="SPARE3"/>
+	</resultMap> 
+	
+	<select id="login" resultMap="user">
+		select oo,pwd,nicheng,pym,grade,ismember,weixin,email,blog,phone,address,spare1,spare2,spare3 from user
+		;
+	</select>
+	<insert id="registerUser" parameterType="com.qq.model.User">
+		insert into user(
+			oo,
+			pwd,
+			nicheng,
+			grade)
+		values(
+			#{oo,jdbcType=VARCHAR},
+			#{pwd,jdbcType=VARCHAR},
+			#{nicheng,jdbcType=VARCHAR},
+			#{grade,jdbcType=VARCHAR}
+		);
+	</insert>
+
+
+</mapper>
